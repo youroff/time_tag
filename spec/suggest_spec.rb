@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module SmartTime
+module TimeTag
   describe Suggest do
     before :each do
       @suggest = Suggest.new
