@@ -6,10 +6,11 @@ Gem::Specification.new do |s|
   s.description = ""
   s.authors     = ["Ivan Youroff"]
   s.email       = 'ivan.youroff@gmail.com'
-  s.files       = ["lib/time_tag.rb"]
+  s.files       = ["{lib}/**/*.rb", "{dicts}/*.yml", "*.md"]
   # s.homepage    =
   #   'http://rubygems.org/gems/hola'
   s.add_dependency "active_support"
+  
   s.add_development_dependency "rspec"
   s.add_development_dependency "guard"
   s.add_development_dependency "guard-rspec"

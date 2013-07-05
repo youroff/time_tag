@@ -1,18 +1,15 @@
 module TimeTag
-  module Parsers
+  module Parser
     class EachWeekday < Base
       
       def pattern
-        /(?:#{d['directives']['each']})\s+(#{weekdays_mask})/i
-      end
-
-      def weekdays
-        d['weekdays']
+        /(?:#{d['directives']['each']}) \s+ (#{weekdays})/xi
       end
       
-      def weekdays_mask
-        weekdays.map { |k,v| v }.join '|'
+      def vars
+        [:weekday]
       end
+
     end
   end
 end

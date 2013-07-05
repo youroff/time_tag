@@ -1,4 +1,4 @@
-smart_time (even far from alpha now)
+TimeTag (even far from alpha now)
 ==========
 
 This supposes to be a little library that parses and represents smart and flexible time objects.

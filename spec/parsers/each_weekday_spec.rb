@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module TimeTag
-  module Parsers
+  module Parser
     describe EachWeekday do
       before :each do
         @parser = EachWeekday.new

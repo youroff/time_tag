@@ -1,24 +1,18 @@
 module TimeTag
-  module Parsers
+  module Parser
     class TimeInterval < Base
       
       attr_reader :result
       
       def pattern
-        /с\s+(#{P[:time]})\s+до\s+(#{P[:time]})(?:\s+(?:#{d['units']['hour']}))?/i
+        /#{d['directives']['from']} \s+ (#{P[:time]}) \s+ #{d['directives']['to']} \s+ (#{P[:time]}) (?:\s+(?:#{d['units']['hour']}))?/xi
       end
       
       def vars
-        [:interval_start, :interval_end]
+        [:start, :end]
       end
-      
-      def find
-        @result = {}
-        results = pattern.match @string
-        vars.each_with_index do |v, i|
-          @result[v] = results[i + 1]
-        end
-      end
+
+
     end
   end
 end

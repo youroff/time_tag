@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module TimeTag
-  module Parsers
+  module Parser
     describe Base do
       before :each do
         @parser = Base.new

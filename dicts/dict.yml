@@ -11,6 +11,9 @@ numbers:
     9: девять
 directives:
   each: каждый|каждую|каждое
+  at: в
+  from: с
+  to: до
 units:
   minute: минута|минуты|минут
   hour: час|часа|часов
