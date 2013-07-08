@@ -19,6 +19,11 @@ module TimeTag
           $1.should == '15:54'
           $2.should == '16:56'
         end
+        
+        it "has the same number of variables in `vars` and pattern" do
+          matches = @parser.pattern.match "с 15:54 до 16:56"
+          matches.captures.size.should == @parser.vars.size
+        end
       end
         
 

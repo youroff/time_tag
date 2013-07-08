@@ -1,4 +1,5 @@
 require 'yaml'
+require_relative '../parser'
 
 module TimeTag
   module Parser
@@ -24,7 +25,10 @@ module TimeTag
       def weekdays
         d['weekdays'].map { |k,v| v }.join '|'
       end
-      
+    
+      def self.register klass
+        Parser.register klass
+      end
     end
   end
 end

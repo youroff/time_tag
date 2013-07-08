@@ -1,12 +1,9 @@
-require 'time_tag/parsers/base'
-require 'time_tag/parsers/each_weekday'
-require 'time_tag/parsers/time_interval'
-require 'time_tag/parsers/at_time'
+
 
 module TimeTag
   module Parser
     
-    PARSERS = [EachWeekday, TimeInterval, AtTime]
+    @@parser_classes = []
     
     class << self
       
@@ -14,7 +11,10 @@ module TimeTag
       end
       
       def matches string
-        merge_matches(string.to_enum :scan, pattern)
+        merge_matches(string.to_enum :scan, pattern).map(&:compact).select do |m|
+          throw ArgumentError if m.size > 2
+          m.size == 2
+        end
       end
       
       def merge_matches(matches_array)
@@ -32,29 +32,13 @@ module TimeTag
       end
       
       def parsers
-        @@parsers ||= PARSERS.map { |p| p.new }
+        @@parsers ||= @@parser_classes.map { |p| p.new }
       end
-    end
-    
 
-    
-  #   def parse string
-  #     parser = new
-  #     parser.parse string
-  #   end
-  #   
-  #   def parsers
-  #     @parsers ||= parsers_classes.map { |parser_class| parser_class.new }
-  #   end
-  #   
-  #   def pattern
-  #     parsers.inject('') { |acc, parser| acc + parser.pattern }
-  #   end
-  #   
-  # private
-  #   def parsers_classes
-  #     [EachWeekday, TimeInterval, AtTime]
-  #   end
-         
+      def register p
+        @@parser_classes << p
+      end
+
+    end
   end
 end
