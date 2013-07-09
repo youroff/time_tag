@@ -5,7 +5,7 @@ module TimeTag
     
     describe "parser's config" do
       it "has parsers instances" do
-        Parser.parsers.each {|p| p.should be_a_kind_of TimeTag::Parser::Base }
+        Parser.patterns.each {|p| p.should be_a_kind_of TimeTag::Patterns::Base }
       end
       
       it "concatenates patterns to one giant mega pattern" do

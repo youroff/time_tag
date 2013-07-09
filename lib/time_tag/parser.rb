@@ -3,7 +3,7 @@
 module TimeTag
   module Parser
     
-    @@parser_classes = []
+    @@pattern_classes = []
     
     class << self
       
@@ -17,28 +17,29 @@ module TimeTag
         end
       end
       
-      def merge_matches(matches_array)
+      def merge_matches matches_array
         vars.zip *matches_array
       end
       
       def vars
-        @@vars ||= parsers.inject [] do |acc, parser|
-          acc | parser.vars.map { |v| [parser.class.to_s, v] }
+        @@vars ||= patterns.inject [] do |acc, pattern|
+          acc | pattern.vars.map { |v| [pattern.class.to_s, v] }
         end
       end
       
       def pattern
-        @@pattern ||= /(?:#{ parsers.map {|p| p.pattern.to_s}.join('|') })+/
+        @@pattern ||= /(?:#{ patterns.map {|p| p.body.to_s}.join('|') })+/
       end
       
-      def parsers
-        @@parsers ||= @@parser_classes.map { |p| p.new }
+      def patterns
+        @@patterns ||= @@pattern_classes.map { |p| p.new }
       end
 
       def register p
-        @@parser_classes << p
+        @@pattern_classes << p
       end
 
     end
+    
   end
 end

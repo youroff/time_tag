@@ -1,10 +1,10 @@
 module TimeTag
-  module Parser
+  module Patterns
     class AtTime < Base
       
-      register self
+      register
       
-      def pattern
+      def body
         /#{d['directives']['at']} \s+ (#{P[:time]}) (?:\s+(?:#{d['units']['hour']}))?/xi
       end
       

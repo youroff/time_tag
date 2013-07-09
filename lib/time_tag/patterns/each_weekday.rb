@@ -1,8 +1,10 @@
 module TimeTag
-  module Parser
+  module Patterns
     class EachWeekday < Base
       
-      def pattern
+      register
+      
+      def body
         /(?:#{d['directives']['each']}) \s+ (#{weekdays})/xi
       end
       
