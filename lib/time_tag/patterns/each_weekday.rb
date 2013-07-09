@@ -12,6 +12,10 @@ module TimeTag
         [:weekday]
       end
 
+      def process attributes, data
+        attributes
+      end
+      
     end
   end
 end

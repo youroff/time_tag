@@ -3,7 +3,7 @@ require 'spec_helper'
 module TimeTag
   describe Tag do
     before :each do
-      @tag = Tag.new
+      @tag = Tag.new Attributes.new
     end
   
     describe "#new" do

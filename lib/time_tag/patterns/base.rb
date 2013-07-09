@@ -14,7 +14,11 @@ module TimeTag
       end
       
       def vars
-        throw NotImplementedError
+        raise NotImplementedError
+      end
+      
+      def process attributes, data
+        raise NotImplementedError
       end
       
       def dict

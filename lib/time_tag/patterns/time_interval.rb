@@ -12,6 +12,10 @@ module TimeTag
         [:start, :end]
       end
 
+      def process attributes, data
+        attributes
+      end
+      
     end
   end
 end
